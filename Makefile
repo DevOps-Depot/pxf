@@ -12,7 +12,8 @@ SOURCE_EXTENSION_DIR = external-table
 TARGET_EXTENSION_DIR = gpextable
 
 LICENSE ?= ASL 2.0
-VENDOR ?= Open Source
+VENDOR  ?= Cloudberry Open Source
+RELEASE ?= 1
 
 default: all
 
@@ -115,7 +116,8 @@ rpm:
 	--define "pxf_release $${PXF_RELEASE}" \
 	--define "license ${LICENSE}" \
 	--define "vendor ${VENDOR}" \
-	-bb $${PWD}/build/rpmbuild/SPECS/pxf-cbdb$${GP_MAJOR_VERSION}.spec
+	--define "release ${RELEASE}" \
+	-bb $${PWD}/build/rpmbuild/SPECS/cloudberry-pxf.spec
 
 rpm-tar: rpm
 	rm -rf build/{stagerpm,distrpm}
